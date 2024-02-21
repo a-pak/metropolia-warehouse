@@ -3,4 +3,4 @@ from django.template import loader
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse('Heööpwwe')
+    return render(request, 'index.html')
