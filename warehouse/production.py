@@ -3,19 +3,23 @@ from .settings import BASE_DIR
 import os
 
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
-
+CSRF_TRUSTED_ORIGINS = ['https://'+os.environ['WEBSITE_HOSTNAME']]
 DEBUG = False
+SECRET_KEY = os.environ['MY_SECRET_KEY']
 
-'''
-CONNECTION = os.environ['AZURE']
+CORS_ALLOWED_ORIGINS = [
+    'https://metropolia-warehouse.azurewebsites.net/' 
+]
+
+CONNECTION = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
+CONNECTION_STR = {pair.split('=')[0]:pair.split('=')[1] for pair in CONNECTION.split(';')}
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "mydatabase",
-        "HOST": "127.0.0.1",
-        "USER": "mydatabaseuser",
-        "PASSWORD": "mypassword",
+        "NAME": CONNECTION_STR['dbname'],
+        "HOST": CONNECTION_STR['host'],
+        "USER": CONNECTION_STR['user'],
+        "PASSWORD": CONNECTION_STR['password'],
     }
 }
-'''
