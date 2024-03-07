@@ -10,11 +10,9 @@ SECRET_KEY = os.environ['MY_SECRET_KEY']
 
 CORS_ALLOWED_ORIGINS = ['*']
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 STORAGES = {
-    # ...
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
@@ -34,3 +32,5 @@ DATABASES = {
         'PASSWORD': conn_str_params['password'],
     }
 }
+
+STATIC_ROOT = BASE_DIR/'staticfiles'
