@@ -26,7 +26,7 @@ class StockItemViewset(viewsets.ViewSet):
     create_serializer_class = CreatedStockItemSerializer
 
     def list(self, request):
-        queryset = self.queryset
+        queryset = StockItem.objects.all()
         serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data)
 
@@ -36,14 +36,12 @@ class StockItemViewset(viewsets.ViewSet):
             instance = serializer.save()
             
             instance = self.queryset.get(pk=instance.id)
-            print(instance.id)
             response_data = {
                 'id': instance.id,
                 'message': 'Object created successfully',
             }
 
             return Response(response_data, status=201)
-            #return Response(serializer.data)
         else:
             return Response(serializer.errors, status=400)
         

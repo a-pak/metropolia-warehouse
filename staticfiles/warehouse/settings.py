@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=i9m&wp-ym6$_@tdbk--g8p0=nwdsupdsz@7+s+808a^klnjl0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -46,13 +46,13 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'warehouse.urls'
@@ -80,8 +80,8 @@ WSGI_APPLICATION = 'warehouse.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5000",
     "http://127.0.0.1:5173",
+    
 ]
 
 DATABASES = {
@@ -140,8 +140,11 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STORAGES = {
     # ...
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
 
