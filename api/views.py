@@ -29,8 +29,7 @@ class StockItemViewset(viewsets.ViewSet):
                 "A": inbound_dock,
                 "B": data['location']
             })
-            if 'IOT_CONNECTION_STRING' in os.environ:
-                send_mqtt_request(message)
+            send_mqtt_request(message)
 
             instance = self.queryset.get(pk=instance.id)
             response_data = {
@@ -55,7 +54,6 @@ class StockItemViewset(viewsets.ViewSet):
             "A": stock_item.location,
             "B": outbound_dock    
         })
-        if 'IOT_CONNECTION_STRING' in os.environ:
-            send_mqtt_request(message)
+        send_mqtt_request(message)
         stock_item.delete()
         return Response(status=204)

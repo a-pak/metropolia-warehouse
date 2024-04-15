@@ -5,9 +5,9 @@ from azure.iot.device.aio import IoTHubDeviceClient
 
 async def main(msg):
     # Fetch the connection string from an environment variable
-    if 'IOT_CONNECTION_STRING' in os.environ:
+    
+    try:   
         conn_str = os.environ['IOT_CONNECTION_STRING']
-        
         # Create instance of the device client using the connection string
         device_client = IoTHubDeviceClient.create_from_connection_string(conn_str)
 
@@ -21,7 +21,7 @@ async def main(msg):
 
         # Finally, shut down the client
         await device_client.shutdown()
-    else:
+    except:
         print('Can not send MQTT message: IOt_CONNECTION_STRING not found')
 
 def send_mqtt_request(msg):
