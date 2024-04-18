@@ -12,7 +12,6 @@ CORS_ALLOWED_ORIGINS = ['https://'+os.environ['WEBSITE_HOSTNAME'],
                         'https://'+os.environ['WEBSITE_HOSTNAME']+'/api/stock/']
 
 
-
 STORAGES = {
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=i9m&wp-ym6$_@tdbk--g8p0=nwdsupdsz@7+s+808a^klnjl0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'https://varasto.azurewebsites.net/api/stock/']
 
 
 # Application definition
