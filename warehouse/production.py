@@ -8,7 +8,8 @@ CSRF_TRUSTED_ORIGINS = ['https://'+os.environ['WEBSITE_HOSTNAME']]
 DEBUG = False
 SECRET_KEY = os.environ['MY_SECRET_KEY']
 
-CORS_ALLOWED_ORIGINS = ['https://'+os.environ['WEBSITE_HOSTNAME']]
+CORS_ALLOWED_ORIGINS = ['https://'+os.environ['WEBSITE_HOSTNAME'],
+                        'https://'+os.environ['WEBSITE_HOSTNAME']+'/api/stock/']
 
 
 
