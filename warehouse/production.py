@@ -10,8 +10,6 @@ SECRET_KEY = os.environ['MY_SECRET_KEY']
 
 CORS_ALLOWED_ORIGINS = ['https://'+os.environ['WEBSITE_HOSTNAME']]
 
-
-
 STORAGES = {
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
