@@ -30,9 +30,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
         
-      - name: Collect Static Files
-        run: python manage.py collectstatic --noinput
-        
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
@@ -69,4 +66,4 @@ jobs:
         with:
           app-name: 'varasto'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CAF9124CA6E54572B37AD39B00B59053 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E2460F501B454FF2A8387E504CE209BB }}
