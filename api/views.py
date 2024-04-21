@@ -5,7 +5,7 @@ from .serializers import *
 from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 import json
-#from .mqtt_io import *
+from .mqtt_io import *
 
 class StockItemViewset(viewsets.ViewSet):
     permission_classes = [permissions.AllowAny]
@@ -29,7 +29,7 @@ class StockItemViewset(viewsets.ViewSet):
                 "A": inbound_dock,
                 "B": data['location']
             })
-            #send_mqtt_request(message)
+            send_mqtt_request(message)
 
             instance = self.queryset.get(pk=instance.id)
             response_data = {
@@ -54,6 +54,6 @@ class StockItemViewset(viewsets.ViewSet):
             "A": stock_item.location,
             "B": outbound_dock    
         })
-        #send_mqtt_request(message)
+        send_mqtt_request(message)
         stock_item.delete()
         return Response(status=204)
